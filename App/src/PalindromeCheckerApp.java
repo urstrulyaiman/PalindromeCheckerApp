@@ -30,32 +30,28 @@ import java.util.Stack;
  * @version 5.0
  */
 
-class PalindromeCheckerApp {
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
 
-    /**
-     * Application entry point for UC5.
-     * @param args Command-line arguments
-     */
+class UseCase6PalindromeCheckerApp {
+
     public static void main(String[] args) {
 
-        // Declare and initialize the input string.
-        String input = "noon";
+        String input = "civic";
 
-        // Create a Stack to store characters.
+        Queue<Character> queue = new LinkedList<>();
         Stack<Character> stack = new Stack<>();
 
-        // Push each character of the string into the stack.
         for (char c : input.toCharArray()) {
+            queue.add(c);
             stack.push(c);
         }
 
-        // Assume palindrome initially.
         boolean isPalindrome = true;
 
-        // Iterate again through original string.
-        for (char c : input.toCharArray()) {
-
-            if (c != stack.pop()) {
+        while (!queue.isEmpty()) {
+            if (!queue.remove().equals(stack.pop())) {
                 isPalindrome = false;
                 break;
             }
